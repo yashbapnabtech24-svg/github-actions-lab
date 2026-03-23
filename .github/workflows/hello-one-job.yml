@@ -1,0 +1,20 @@
+name: One Job Hello
+
+on:
+  push:
+
+jobs:
+  say_hello:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Print a greeting
+        run: echo "Hello from GitHub Actions, single job!"
+
+      - name: Show working directory and list files
+        run: |
+          pwd
+          ls -la
