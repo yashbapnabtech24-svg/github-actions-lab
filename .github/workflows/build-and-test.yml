@@ -1,0 +1,35 @@
+name: Build and Test (Two Jobs)
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build project
+        run: |
+          echo "Running build..."
+          echo "Build finished."
+
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run tests
+        run: |
+          echo "Running tests..."
+          echo "All tests passed."
+
+      - name: Final message
+        run: echo "Test job completed after build."
